@@ -1,11 +1,11 @@
 #!/bin/sh
 
-branch = $1
+branch=$1
 test -z $branch && echo "Need to provide a new branch name." 1>&2 && exit 1
 
 if [[ $branch != *"release-"* ]]
 then
-  branch = "release-$branch"
+  branch="release-$branch"
 fi
 
 git checkout -b $branch develop

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-branch = $1
+branch=$1
 test -z $branch && echo "Need to provide working branch." 1>&2 && exit 1
 
 # Release branch
