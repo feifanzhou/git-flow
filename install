@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cp ./git-feature /usr/bin/git-feature
+cp ./git-flow /usr/bin/git-flow
+cp ./git-hotfix /usr/bin/git-hotfix
+cp ./git-release /usr/bin/git-release
