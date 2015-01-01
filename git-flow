@@ -1,0 +1,33 @@
+#!/bin/sh
+
+branch = $1
+test -z $branch && echo "Need to provide working branch." 1>&2 && exit 1
+
+# Release branch
+if [[ $branch == *"release-"* ]]
+then
+  git checkout master
+  git merge --no-ff $branch
+  git tag -a $branch
+  git checkout develop
+  git merge --no-ff $branch
+  git branch -d $branch
+
+# Hotfix branch
+elif [[ $branch == *"hotfix-"* ]]
+then
+  git checkout master
+  git merge --no-ff $branch
+  git tag -a $branch
+  # FIXME: If there is a release branch, merge into release branch instead
+  git checkout develop
+  git merge --no-ff $branch
+  git branch -d $branch
+
+# Feature branch
+else
+  git checkout develop
+  git merge --no-ff $branch
+  git branch -d $branch
+  git push origin develop
+fi
