@@ -1,6 +1,6 @@
 #!/bin/sh
 
 branch=$1
-test -z $branch && echo "Nede to provide a new branch name." 1>&2 && exit 1
+test -z $branch && echo "Need to provide a new branch name." 1>&2 && exit 1
 
 git checkout -b $branch develop
